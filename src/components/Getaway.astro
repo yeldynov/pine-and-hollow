@@ -1,0 +1,41 @@
+---
+import { Image } from 'astro:assets';
+import { site } from '../data/site';
+
+const { heading, house, insetImage, image } = site.getaway;
+---
+
+<section id="houses" class="grid md:grid-cols-2">
+  <!-- Left: sand panel. Ink text instead of the reference's white-on-sand (1.5:1) -->
+  <div class="flex flex-col items-center justify-between gap-12 bg-sand px-6 py-16 md:py-20">
+    <div class="flex flex-col items-center">
+      <h2 class="relative z-10 max-w-[13ch] text-center text-[clamp(2.25rem,4vw,var(--text-h3))] leading-(--text-h3--line-height)">
+        {heading.map((s) => (s.italic ? <em class="font-normal">{s.text}</em> : s.text))}
+      </h2>
+      <Image
+        src={insetImage.src}
+        alt={insetImage.alt}
+        widths={[250, 500]}
+        sizes="15rem"
+        class="-mt-7 aspect-[2/3] w-48 object-cover md:w-60"
+      />
+    </div>
+
+    <a href={house.href} class="group flex items-center gap-6 text-ink">
+      <span class="font-display text-[clamp(2rem,3.5vw,var(--text-h3))] font-light leading-none">{house.name}</span>
+      <span class="h-16 w-px rotate-[20deg] bg-ink/50" aria-hidden="true"></span>
+      <svg class="w-10 transition-transform group-hover:translate-x-1" viewBox="0 0 40 12" fill="none" stroke="currentColor" aria-hidden="true">
+        <path d="M0 6h38M33 1l5 5-5 5" />
+      </svg>
+    </a>
+  </div>
+
+  <!-- Right: large interior photo, full-bleed -->
+  <Image
+    src={image.src}
+    alt={image.alt}
+    widths={[640, 1024, 1600]}
+    sizes="(min-width: 768px) 50vw, 100vw"
+    class="aspect-[4/3] size-full object-cover md:aspect-auto md:min-h-[45rem]"
+  />
+</section>

@@ -1,0 +1,26 @@
+---
+import { Image } from 'astro:assets';
+import { site } from '../data/site';
+
+const { heading, body, link, image } = site.about;
+---
+
+<section id="about" class="mx-auto grid max-w-6xl items-center gap-14 px-4 py-20 md:grid-cols-2 md:gap-8 md:py-44 lg:px-16">
+  <Image
+    src={image.src}
+    alt={image.alt}
+    widths={[400, 800]}
+    sizes="(min-width: 768px) 25rem, 16rem"
+    class="aspect-[2/3] w-64 justify-self-center rounded-full object-cover md:w-full md:max-w-[25rem]"
+  />
+
+  <div class="max-w-[31rem] justify-self-center">
+    <h2 class="text-center text-[clamp(3rem,6vw,var(--text-h2))] leading-(--text-h2--line-height)">{heading}</h2>
+    <div class="mt-10 space-y-4 md:mt-14">
+      {body.map((p) => <p>{p}</p>)}
+    </div>
+    <a href={link.href} class="mt-8 inline-flex gap-2 text-nav font-semibold uppercase text-stone transition-colors hover:text-ink">
+      {link.label} <span aria-hidden="true">&gt;</span>
+    </a>
+  </div>
+</section>

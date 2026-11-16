@@ -1,6 +1,10 @@
 // All page content lives here so components stay presentational.
 // Images get added once photos are picked (src/assets + CREDITS.md).
 import heroImage from '../assets/hero-placeholder.svg';
+// ponytail: placeholders reuse the hero SVG; swap each for its own photo
+const aboutImage = heroImage;
+const getawayInsetImage = heroImage;
+const getawayImage = heroImage;
 
 export const site = {
   meta: {
@@ -40,6 +44,7 @@ export const site = {
       'Spend the day on the ridge trails or by the creek, then come back to a fire and a sky full of stars. We keep things simple so you can slow down.',
     ],
     link: { label: 'Check our availability', href: '#booking' },
+    image: { src: aboutImage, alt: 'Pine branches against the weathered timber wall of a cabin' },
   },
 
   getaway: {
@@ -49,6 +54,8 @@ export const site = {
       { text: ' the Pines' },
     ],
     house: { name: 'The Hollow Cabin', href: '#houses' },
+    insetImage: { src: getawayInsetImage, alt: 'Linen curtains and soft morning light in a cabin bedroom' },
+    image: { src: getawayImage, alt: 'Open living room with a wood stove and tall windows facing the forest' },
   },
 
   testimonial: {
