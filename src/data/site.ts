@@ -58,7 +58,7 @@ export const site = {
       { text: 'in', italic: true },
       { text: ' the Pines' },
     ],
-    house: { name: 'The Hollow Cabin', href: '#houses' },
+    house: { name: 'The Hollow Cabin', href: '#booking' },
     insetImage: { src: getawayInsetImage, alt: 'Unmade bed beneath a sunny window looking out onto green trees' },
     image: { src: getawayImage, alt: 'Open living and dining room with a vaulted ceiling, wood stove and windows onto the forest' },
   },
