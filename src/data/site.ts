@@ -11,6 +11,9 @@ import insta4 from '../assets/insta-4.jpg';
 import insta5 from '../assets/insta-5.jpg';
 import insta6 from '../assets/insta-6.jpg';
 
+const email = 'hello@pineandhollow.com';
+const bookingUrl = 'https://yeldynov.netlify.app/';
+
 export const site = {
   meta: {
     title: 'Pine & Hollow · Forest cabins in the mountains',
@@ -26,7 +29,7 @@ export const site = {
   ],
 
   location: { label: 'Hollow Ridge Valley', href: 'https://maps.google.com/?q=Hollow+Ridge+Valley' },
-  booking: { label: 'Booking', href: '#booking' },
+  booking: { label: 'Booking', href: bookingUrl },
 
   hero: {
     eyebrow: 'Welcome to Pine & Hollow',
@@ -38,7 +41,7 @@ export const site = {
       { text: 'and', italic: true },
       { text: ' Enjoy' },
     ],
-    cta: { label: 'Booking', href: '#booking' },
+    cta: { label: 'Booking', href: bookingUrl },
     image: { src: heroImage, alt: 'A-frame timber cabin among tall pines in deep snow' },
   },
 
@@ -48,19 +51,63 @@ export const site = {
       'Pine & Hollow is a handful of timber cabins tucked into an old pine forest, an hour above the valley. Each one is built for quiet: wide windows onto the trees, a wood stove, linen sheets and nothing that beeps.',
       'Spend the day on the ridge trails or by the creek, then come back to a fire and a sky full of stars. We keep things simple so you can slow down.',
     ],
-    link: { label: 'Check our availability', href: '#booking' },
+    link: { label: 'Check our availability', href: '#prices' },
     image: { src: aboutImage, alt: 'Close-up of silver-blue spruce branches' },
   },
 
+  // Houses carousel. Houses 2 and 3 reuse Instagram photos as placeholders: swap for their own shots
   getaway: {
-    heading: [
-      { text: 'Unique Getaway ' },
-      { text: 'in', italic: true },
-      { text: ' the Pines' },
+    label: 'Our houses',
+    houses: [
+      {
+        name: 'The Hollow Cabin',
+        href: '#prices',
+        tagline: [
+          { text: 'Unique Getaway ' },
+          { text: 'in', italic: true },
+          { text: ' the Pines' },
+        ],
+        insetImage: { src: getawayInsetImage, alt: 'Unmade bed beneath a sunny window looking out onto green trees' },
+        image: { src: getawayImage, alt: 'Open living and dining room with a vaulted ceiling, wood stove and windows onto the forest' },
+      },
+      {
+        name: 'The Stove House',
+        href: '#prices',
+        tagline: [
+          { text: 'Slow Evenings ' },
+          { text: 'by', italic: true },
+          { text: ' the Fire' },
+        ],
+        insetImage: { src: insta1, alt: 'Wood-burning stove inside a timber cabin' },
+        image: { src: insta4, alt: 'Cabin living room gathered around a wood stove' },
+      },
+      {
+        name: 'The Ridge Hut',
+        href: '#prices',
+        tagline: [
+          { text: 'Snowed In ' },
+          { text: 'and', italic: true },
+          { text: ' Happy' },
+        ],
+        insetImage: { src: insta5, alt: 'Mountain lake framed by rocks and grass' },
+        image: { src: insta6, alt: 'Wooden cabin half buried in snow among the trees' },
+      },
     ],
-    house: { name: 'The Hollow Cabin', href: '#booking' },
-    insetImage: { src: getawayInsetImage, alt: 'Unmade bed beneath a sunny window looking out onto green trees' },
-    image: { src: getawayImage, alt: 'Open living and dining room with a vaulted ceiling, wood stove and windows onto the forest' },
+  },
+
+  prices: {
+    heading: [
+      { text: 'Simple Rates, ' },
+      { text: 'all', italic: true },
+      { text: ' Year Round' },
+    ],
+    rates: [
+      { label: 'Weeknight', detail: 'Sunday to Thursday', price: '€180' },
+      { label: 'Weekend night', detail: 'Friday and Saturday', price: '€220' },
+      { label: 'Full week', detail: 'Seven nights', price: '€1,150' },
+    ],
+    note: 'Per cabin, up to four guests. Firewood, linen and a breakfast basket are included. Two-night minimum.',
+    cta: { label: 'Request a stay', href: bookingUrl },
   },
 
   testimonial: {
@@ -91,7 +138,7 @@ export const site = {
       { label: 'Privacy policy', href: '/privacy' },
     ],
     address: ['Pine & Hollow Cabins', 'Hollow Ridge Valley'],
-    email: 'hello@pineandhollow.com',
+    email,
     phone: '+1 555 0142 300',
     language: 'English',
   },

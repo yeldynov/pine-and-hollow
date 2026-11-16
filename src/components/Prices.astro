@@ -1,0 +1,35 @@
+---
+import { site } from '../data/site';
+
+const { heading, rates, note, cta } = site.prices;
+---
+
+<section id="prices" class="px-4 pt-24 md:pt-44">
+  <div class="mx-auto flex max-w-2xl flex-col items-center text-center">
+    <h2 class="max-w-[14ch] text-[clamp(2.5rem,5vw,var(--text-h2))] leading-(--text-h2--line-height)">
+      {heading.map((s) => (s.italic ? <em class="font-normal">{s.text}</em> : s.text))}
+    </h2>
+
+    <dl class="mt-12 w-full divide-y divide-mist border-y border-mist md:mt-16">
+      {rates.map((rate) => (
+        <div class="flex items-baseline justify-between gap-6 py-6 text-left">
+          <dt>
+            <span class="block text-nav font-semibold uppercase text-ink">{rate.label}</span>
+            <span class="mt-1 block text-sm text-stone">{rate.detail}</span>
+          </dt>
+          <dd class="font-display text-[2rem] font-light leading-none text-ink md:text-h3">{rate.price}</dd>
+        </div>
+      ))}
+    </dl>
+
+    <p class="mt-8 max-w-[34rem]">{note}</p>
+    <a
+      href={cta.href}
+      target="_blank"
+      rel="noopener"
+      class="mt-10 rounded-full bg-pine px-12 py-5 text-sm font-medium uppercase tracking-[0.12em] text-cream transition-colors hover:bg-pine-dark"
+    >
+      {cta.label}<span class="sr-only"> (opens in a new tab)</span>
+    </a>
+  </div>
+</section>

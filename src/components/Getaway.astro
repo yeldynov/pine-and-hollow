@@ -2,40 +2,95 @@
 import { Image } from 'astro:assets';
 import { site } from '../data/site';
 
-const { heading, house, insetImage, image } = site.getaway;
+const { label, houses } = site.getaway;
+const arrow = 'M0 6h38M33 1l5 5-5 5';
+const control =
+  'flex size-12 items-center justify-center rounded-full bg-cream/90 text-ink transition-colors hover:bg-cream disabled:opacity-40';
 ---
 
-<section id="houses" class="grid md:grid-cols-2">
-  <!-- Left: sand panel. Ink text instead of the reference's white-on-sand (1.5:1) -->
-  <div class="flex flex-col items-center justify-between gap-12 bg-sand px-6 py-16 md:py-20">
-    <div class="flex flex-col items-center">
-      <h2 class="relative z-10 max-w-[13ch] text-center text-[clamp(2.25rem,4vw,var(--text-h3))] leading-(--text-h3--line-height)">
-        {heading.map((s) => (s.italic ? <em class="font-normal">{s.text}</em> : s.text))}
-      </h2>
-      <Image
-        src={insetImage.src}
-        alt={insetImage.alt}
-        widths={[250, 500]}
-        sizes="15rem"
-        class="-mt-7 aspect-[2/3] w-48 object-cover md:w-60"
-      />
-    </div>
+<!-- Carousel: native scroll-snap does the sliding and swiping; the script only wires the buttons -->
+<section id="houses" aria-roledescription="carousel" aria-label={label} class="relative" data-carousel>
+  <h2 class="sr-only">{label}</h2>
 
-    <a href={house.href} class="group flex items-center gap-6 text-ink">
-      <span class="font-display text-[clamp(2rem,3.5vw,var(--text-h3))] font-light leading-none">{house.name}</span>
-      <span class="h-16 w-px rotate-[20deg] bg-ink/50" aria-hidden="true"></span>
-      <svg class="w-10 transition-transform group-hover:translate-x-1" viewBox="0 0 40 12" fill="none" stroke="currentColor" aria-hidden="true">
-        <path d="M0 6h38M33 1l5 5-5 5" />
-      </svg>
-    </a>
+  <ul class="flex snap-x snap-mandatory overflow-x-auto overscroll-x-contain [scrollbar-width:none]" data-track>
+    {houses.map((house, i) => (
+      <li
+        class="grid w-full shrink-0 snap-start md:grid-cols-2"
+        aria-roledescription="slide"
+        aria-label={`${i + 1} of ${houses.length}: ${house.name}`}
+      >
+        <!-- Left: sand panel. Ink text instead of the reference's white-on-sand (1.5:1) -->
+        <div class="flex flex-col items-center justify-between gap-12 bg-sand px-6 py-16 md:py-20">
+          <div class="flex flex-col items-center">
+            <h3 class="relative z-10 max-w-[13ch] text-center text-[clamp(2.25rem,4vw,var(--text-h3))] leading-(--text-h3--line-height)">
+              {house.tagline.map((s) => (s.italic ? <em class="font-normal">{s.text}</em> : s.text))}
+            </h3>
+            <Image
+              src={house.insetImage.src}
+              alt={house.insetImage.alt}
+              widths={[250, 500]}
+              sizes="15rem"
+              class="-mt-7 aspect-[2/3] w-48 object-cover md:w-60"
+            />
+          </div>
+
+          <a href={house.href} class="group flex items-center gap-6 text-ink">
+            <span class="font-display text-[clamp(2rem,3.5vw,var(--text-h3))] font-light leading-none">{house.name}</span>
+            <span class="h-16 w-px rotate-[20deg] bg-ink/50" aria-hidden="true"></span>
+            <svg class="w-10 transition-transform motion-safe:group-hover:translate-x-1" viewBox="0 0 40 12" fill="none" stroke="currentColor" aria-hidden="true">
+              <path d={arrow} />
+            </svg>
+          </a>
+        </div>
+
+        <!-- Right: large interior photo, full-bleed -->
+        <Image
+          src={house.image.src}
+          alt={house.image.alt}
+          widths={[640, 1024, 1600]}
+          sizes="(min-width: 768px) 50vw, 100vw"
+          class="aspect-[4/3] size-full object-cover md:aspect-auto md:min-h-[45rem]"
+        />
+      </li>
+    ))}
+  </ul>
+
+  <div class="absolute bottom-6 right-6 flex items-center gap-3">
+    <p class="mr-2 rounded-full bg-cream/90 px-4 py-2 text-nav font-semibold text-ink" aria-live="polite" data-counter>
+      1 / {houses.length}
+    </p>
+    <button type="button" class={control} aria-label="Previous house" data-prev disabled>
+      <svg class="w-6 rotate-180" viewBox="0 0 40 12" fill="none" stroke="currentColor" aria-hidden="true"><path d={arrow} /></svg>
+    </button>
+    <button type="button" class={control} aria-label="Next house" data-next>
+      <svg class="w-6" viewBox="0 0 40 12" fill="none" stroke="currentColor" aria-hidden="true"><path d={arrow} /></svg>
+    </button>
   </div>
-
-  <!-- Right: large interior photo, full-bleed -->
-  <Image
-    src={image.src}
-    alt={image.alt}
-    widths={[640, 1024, 1600]}
-    sizes="(min-width: 768px) 50vw, 100vw"
-    class="aspect-[4/3] size-full object-cover md:aspect-auto md:min-h-[45rem]"
-  />
 </section>
+
+<script>
+  const root = document.querySelector<HTMLElement>('[data-carousel]')!;
+  const track = root.querySelector<HTMLElement>('[data-track]')!;
+  const prev = root.querySelector<HTMLButtonElement>('[data-prev]')!;
+  const next = root.querySelector<HTMLButtonElement>('[data-next]')!;
+  const counter = root.querySelector<HTMLElement>('[data-counter]')!;
+  const slides = [...track.children] as HTMLElement[];
+  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
+
+  const go = (dir: number) =>
+    track.scrollBy({ left: dir * track.clientWidth, behavior: reduceMotion.matches ? 'auto' : 'smooth' });
+
+  const update = () => {
+    const i = Math.round(track.scrollLeft / track.clientWidth);
+    prev.disabled = i === 0;
+    next.disabled = i === slides.length - 1;
+    counter.textContent = `${i + 1} / ${slides.length}`;
+    // Off-screen slides drop out of the tab order and the accessibility tree
+    slides.forEach((slide, n) => (slide.inert = n !== i));
+  };
+
+  prev.addEventListener('click', () => go(-1));
+  next.addEventListener('click', () => go(1));
+  track.addEventListener('scroll', update, { passive: true });
+  update();
+</script>

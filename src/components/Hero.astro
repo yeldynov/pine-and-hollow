@@ -24,9 +24,11 @@ const { eyebrow, headline, cta, image } = site.hero;
     </h1>
     <a
       href={cta.href}
+      target="_blank"
+      rel="noopener"
       class="mt-10 rounded-full bg-pine px-12 py-5 text-sm font-medium uppercase tracking-[0.12em] text-cream transition-colors hover:bg-pine-dark focus-visible:outline-cream"
     >
-      {cta.label}
+      {cta.label}<span class="sr-only"> (opens in a new tab)</span>
     </a>
   </div>
 </section>

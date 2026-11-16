@@ -46,9 +46,11 @@ const linkClass = 'text-nav font-medium uppercase text-ink transition-colors hov
       <a href={location.href} class:list={[linkClass, 'hidden lg:inline']}>{location.label}</a>
       <a
         href={booking.href}
+        target="_blank"
+        rel="noopener"
         class="rounded-full bg-pine px-5 py-3 text-nav font-semibold uppercase text-cream transition-colors hover:bg-pine-dark lg:px-9 lg:py-4"
       >
-        {booking.label}
+        {booking.label}<span class="sr-only"> (opens in a new tab)</span>
       </a>
     </div>
   </div>
