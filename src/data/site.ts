@@ -1,10 +1,15 @@
 // All page content lives here so components stay presentational.
-// Images get added once photos are picked (src/assets + CREDITS.md).
-import heroImage from '../assets/hero-placeholder.svg';
-// ponytail: placeholders reuse the hero SVG; swap each for its own photo
-const aboutImage = heroImage;
-const getawayInsetImage = heroImage;
-const getawayImage = heroImage;
+// Photos from Unsplash, credited in CREDITS.md.
+import heroImage from '../assets/hero.jpg';
+import aboutImage from '../assets/about.jpg';
+import getawayInsetImage from '../assets/getaway-inset.jpg';
+import getawayImage from '../assets/getaway.jpg';
+import insta1 from '../assets/insta-1.jpg';
+import insta2 from '../assets/insta-2.jpg';
+import insta3 from '../assets/insta-3.jpg';
+import insta4 from '../assets/insta-4.jpg';
+import insta5 from '../assets/insta-5.jpg';
+import insta6 from '../assets/insta-6.jpg';
 
 export const site = {
   meta: {
@@ -34,7 +39,7 @@ export const site = {
       { text: ' Enjoy' },
     ],
     cta: { label: 'Booking', href: '#booking' },
-    image: { src: heroImage, alt: 'Timber cabins among tall pines on a misty mountain slope' },
+    image: { src: heroImage, alt: 'A-frame timber cabin among tall pines in deep snow' },
   },
 
   about: {
@@ -44,7 +49,7 @@ export const site = {
       'Spend the day on the ridge trails or by the creek, then come back to a fire and a sky full of stars. We keep things simple so you can slow down.',
     ],
     link: { label: 'Check our availability', href: '#booking' },
-    image: { src: aboutImage, alt: 'Pine branches against the weathered timber wall of a cabin' },
+    image: { src: aboutImage, alt: 'Close-up of silver-blue spruce branches' },
   },
 
   getaway: {
@@ -54,8 +59,8 @@ export const site = {
       { text: ' the Pines' },
     ],
     house: { name: 'The Hollow Cabin', href: '#houses' },
-    insetImage: { src: getawayInsetImage, alt: 'Linen curtains and soft morning light in a cabin bedroom' },
-    image: { src: getawayImage, alt: 'Open living room with a wood stove and tall windows facing the forest' },
+    insetImage: { src: getawayInsetImage, alt: 'Unmade bed beneath a sunny window looking out onto green trees' },
+    image: { src: getawayImage, alt: 'Open living and dining room with a vaulted ceiling, wood stove and windows onto the forest' },
   },
 
   testimonial: {
@@ -69,14 +74,13 @@ export const site = {
   instagram: {
     handle: '@pineandhollow',
     href: 'https://instagram.com/pineandhollow',
-    // ponytail: all placeholders; swap src per photo
     images: [
-      { src: heroImage, alt: 'Stack of split firewood beside a cabin door' },
-      { src: heroImage, alt: 'Bright cabin kitchen with a stone counter' },
-      { src: heroImage, alt: 'Mountain lake under a pale morning sky' },
-      { src: heroImage, alt: 'Dining nook with pendant lights and timber beams' },
-      { src: heroImage, alt: 'Tall pines on the ridge trail at dusk' },
-      { src: heroImage, alt: 'Cabin deck with chairs overlooking the valley' },
+      { src: insta1, alt: 'Wood-burning stove inside a timber cabin' },
+      { src: insta2, alt: 'Aerial view of a dense pine forest crossed by a path' },
+      { src: insta3, alt: 'Still lake ringed by pines and mountain peaks' },
+      { src: insta4, alt: 'Cabin living room gathered around a wood stove' },
+      { src: insta5, alt: 'Mountain lake framed by rocks and grass' },
+      { src: insta6, alt: 'Wooden cabin half buried in snow among the trees' },
     ],
   },
 
