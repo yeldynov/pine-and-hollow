@@ -1,18 +1,12 @@
 ---
 import Base from '../layouts/Base.astro';
-import { site } from '../data/site';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
 ---
 
 <Base>
-  <!-- Temporary token check; replaced by section components in step 2 -->
-  <main class="mx-auto max-w-3xl space-y-6 px-4 py-16">
-    <p class="text-eyebrow uppercase text-stone">{site.hero.eyebrow}</p>
-    <h1 class="text-[clamp(3rem,8vw,var(--text-display))] leading-(--text-display--line-height)">
-      {site.hero.headline.map((s) => (s.italic ? <em>{s.text}</em> : s.text))}
-    </h1>
-    <p>{site.about.body[0]}</p>
-    <a href={site.booking.href} class="inline-block rounded-full bg-pine px-8 py-3 text-nav font-semibold uppercase text-cream hover:bg-pine-dark">
-      {site.booking.label}
-    </a>
+  <Header />
+  <main id="main">
+    <Hero />
   </main>
 </Base>

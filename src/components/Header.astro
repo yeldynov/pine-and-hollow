@@ -1,0 +1,84 @@
+---
+import { site } from '../data/site';
+
+const { nav, location, booking } = site;
+const linkClass = 'text-nav font-medium uppercase text-ink transition-colors hover:text-stone';
+---
+
+<a
+  href="#main"
+  class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-ink focus:px-4 focus:py-2 focus:text-cream"
+>
+  Skip to content
+</a>
+
+<header class="relative z-20 bg-cream">
+  <div class="mx-auto grid max-w-7xl grid-cols-[1fr_auto_1fr] items-center px-4 py-5 lg:px-16 lg:py-8">
+    <!-- Left: desktop nav / mobile burger -->
+    <nav aria-label="Main" class="hidden lg:block">
+      <ul class="flex gap-11">
+        {nav.map((item) => <li><a href={item.href} class={linkClass}>{item.label}</a></li>)}
+      </ul>
+    </nav>
+    <button
+      type="button"
+      class="group -ml-2.5 flex size-11 items-center justify-center text-ink lg:hidden"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+      aria-label="Menu"
+      data-menu-toggle
+    >
+      <svg class="size-6 group-aria-expanded:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+        <path d="M3 7h18M3 12h18M3 17h18" />
+      </svg>
+      <svg class="hidden size-6 group-aria-expanded:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+        <path d="M5 5l14 14M19 5L5 19" />
+      </svg>
+    </button>
+
+    <!-- Center: logo -->
+    <a href="/" class="font-display text-[1.625rem] leading-none text-ink lg:text-logo">
+      Pine <em>&amp;</em> Hollow
+    </a>
+
+    <!-- Right: location + booking -->
+    <div class="flex items-center justify-end gap-10">
+      <a href={location.href} class:list={[linkClass, 'hidden lg:inline']}>{location.label}</a>
+      <a
+        href={booking.href}
+        class="rounded-full bg-pine px-5 py-3 text-nav font-semibold uppercase text-cream transition-colors hover:bg-pine-dark lg:px-9 lg:py-4"
+      >
+        {booking.label}
+      </a>
+    </div>
+  </div>
+
+  <!-- Mobile menu panel -->
+  <div id="mobile-menu" class="absolute inset-x-0 top-full border-t border-mist bg-cream px-4 pb-8 pt-4 shadow-sm lg:hidden" hidden>
+    <nav aria-label="Mobile">
+      <ul class="flex flex-col">
+        {nav.map((item) => <li><a href={item.href} class:list={[linkClass, 'block py-3']}>{item.label}</a></li>)}
+        <li><a href={location.href} class:list={[linkClass, 'block py-3 text-stone']}>{location.label}</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('[data-menu-toggle]')!;
+  const menu = document.getElementById('mobile-menu')!;
+
+  const setOpen = (open: boolean) => {
+    toggle.setAttribute('aria-expanded', String(open));
+    menu.hidden = !open;
+  };
+
+  toggle.addEventListener('click', () => setOpen(menu.hidden));
+  menu.addEventListener('click', (e) => (e.target as Element).closest('a') && setOpen(false));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !menu.hidden) {
+      setOpen(false);
+      toggle.focus();
+    }
+  });
+</script>

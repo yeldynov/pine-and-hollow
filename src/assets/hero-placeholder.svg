@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <!-- Placeholder until a real photo is picked; replace import in src/data/site.ts -->
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#c9ccc4"/>
+      <stop offset="1" stop-color="#8d9686"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#sky)"/>
+  <path fill="#5c6652" d="M0 620 L180 380 L300 560 L460 300 L640 600 L800 340 L980 580 L1150 280 L1320 560 L1480 360 L1600 520 V900 H0Z"/>
+  <path fill="#3d4738" d="M0 760 L120 560 L240 740 L380 500 L540 760 L700 540 L860 780 L1020 520 L1200 770 L1360 560 L1600 780 V900 H0Z"/>
+</svg>

@@ -1,0 +1,32 @@
+---
+import { Image } from 'astro:assets';
+import { site } from '../data/site';
+
+const { eyebrow, headline, cta, image } = site.hero;
+---
+
+<section class="relative isolate flex min-h-[34rem] items-center justify-center overflow-hidden px-4 py-24 text-center lg:min-h-[48rem]">
+  <Image
+    src={image.src}
+    alt={image.alt}
+    widths={[640, 1024, 1600, 2400]}
+    sizes="100vw"
+    loading="eager"
+    fetchpriority="high"
+    class="absolute inset-0 -z-10 size-full object-cover"
+  />
+  <div class="absolute inset-0 -z-10 bg-ink/35" aria-hidden="true"></div>
+
+  <div class="flex flex-col items-center">
+    <p class="text-sm font-medium uppercase tracking-[0.1em] text-cream lg:text-eyebrow">{eyebrow}</p>
+    <h1 class="mt-5 max-w-4xl text-[clamp(3rem,7.5vw,var(--text-display))] leading-(--text-display--line-height) text-cream">
+      {headline.map((s) => (s.italic ? <em class="font-normal">{s.text}</em> : s.text))}
+    </h1>
+    <a
+      href={cta.href}
+      class="mt-10 rounded-full bg-pine px-12 py-5 text-sm font-medium uppercase tracking-[0.12em] text-cream transition-colors hover:bg-pine-dark focus-visible:outline-cream"
+    >
+      {cta.label}
+    </a>
+  </div>
+</section>

@@ -1,5 +1,6 @@
 // All page content lives here so components stay presentational.
 // Images get added once photos are picked (src/assets + CREDITS.md).
+import heroImage from '../assets/hero-placeholder.svg';
 
 export const site = {
   meta: {
@@ -29,6 +30,7 @@ export const site = {
       { text: ' Enjoy' },
     ],
     cta: { label: 'Booking', href: '#booking' },
+    image: { src: heroImage, alt: 'Timber cabins among tall pines on a misty mountain slope' },
   },
 
   about: {
