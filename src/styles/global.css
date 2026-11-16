@@ -1,1 +1,55 @@
 @import "tailwindcss";
+
+/* Latin subset only: keeps font payload small for Lighthouse */
+@import "@fontsource/cormorant-garamond/latin-300.css";
+@import "@fontsource/cormorant-garamond/latin-300-italic.css";
+@import "@fontsource/cormorant-garamond/latin-400.css";
+@import "@fontsource/cormorant-garamond/latin-400-italic.css";
+@import "@fontsource/montserrat/latin-400.css";
+@import "@fontsource/montserrat/latin-400-italic.css";
+@import "@fontsource/montserrat/latin-500.css";
+@import "@fontsource/montserrat/latin-600.css";
+
+@theme {
+  --color-cream: #f7f6ed;      /* page bg */
+  --color-linen: #ede8dd;      /* insta band, footer */
+  --color-sand: #dcd2c3;       /* panels */
+  --color-ink: #181718;        /* headings */
+  --color-ink-soft: #5f5d5b;   /* body, 5.9:1 on cream */
+  --color-stone: #6f6455;      /* muted text: 5.3:1 cream, 4.7:1 linen. NOT on sand */
+  --color-mist: #c9c0b3;       /* decorative only (stars, dividers), never text */
+  --color-pine: #4f5b48;       /* accent: pills, cream label 6.6:1 */
+  --color-pine-dark: #3d4738;  /* accent hover */
+
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Montserrat", system-ui, sans-serif;
+
+  --text-display: 6rem;
+  --text-display--line-height: 0.95;
+  --text-h2: 4.5rem;
+  --text-h2--line-height: 1;
+  --text-h3: 3rem;
+  --text-h3--line-height: 1.05;
+  --text-logo: 1.875rem;
+  --text-logo--line-height: 1;
+  --text-eyebrow: 1.125rem;
+  --text-eyebrow--letter-spacing: 0.1em;
+  --text-body: 1.0625rem;
+  --text-body--line-height: 2;
+  --text-nav: 0.6875rem;
+  --text-nav--letter-spacing: 0.12em;
+}
+
+@layer base {
+  body {
+    @apply bg-cream font-sans text-body text-ink-soft antialiased;
+  }
+
+  h1, h2, h3 {
+    @apply font-display font-light text-ink;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-pine;
+  }
+}

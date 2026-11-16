@@ -12,6 +12,8 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@fontsource/cormorant-garamond": "^5.3.0",
+    "@fontsource/montserrat": "^5.3.0",
     "@tailwindcss/vite": "^4.3.5",
     "astro": "^7.4.12",
     "tailwindcss": "^4.3.5"
