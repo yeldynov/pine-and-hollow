@@ -37,7 +37,7 @@ const linkClass = 'text-nav font-medium uppercase text-ink transition-colors hov
     </button>
 
     <!-- Center: logo -->
-    <a href="/" class="font-display text-[1.625rem] leading-none text-ink lg:text-logo">
+    <a href="/" class="font-display text-[1.375rem] leading-none text-ink sm:text-[1.625rem] lg:text-logo">
       Pine <em>&amp;</em> Hollow
     </a>
 
@@ -48,7 +48,7 @@ const linkClass = 'text-nav font-medium uppercase text-ink transition-colors hov
         href={booking.href}
         target="_blank"
         rel="noopener"
-        class="rounded-full bg-pine px-5 py-3 text-nav font-semibold uppercase text-cream transition-colors hover:bg-pine-dark lg:px-9 lg:py-4"
+        class="rounded-full bg-pine px-4 py-3 text-nav sm:px-5 font-semibold uppercase text-cream transition-colors hover:bg-pine-dark lg:px-9 lg:py-4"
       >
         {booking.label}<span class="sr-only"> (opens in a new tab)</span>
       </a>
@@ -75,7 +75,7 @@ const linkClass = 'text-nav font-medium uppercase text-ink transition-colors hov
     menu.hidden = !open;
   };
 
-  toggle.addEventListener('click', () => setOpen(menu.hidden));
+  toggle.addEventListener('click', () => setOpen(menu.hidden !== false));
   menu.addEventListener('click', (e) => (e.target as Element).closest('a') && setOpen(false));
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && !menu.hidden) {

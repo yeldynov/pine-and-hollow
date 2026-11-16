@@ -22,8 +22,8 @@ const small = 'text-nav font-medium uppercase text-ink';
         {address.map((line) => <span class="block">{line}</span>)}
       </address>
       <p>
-        <a href={`mailto:${email}`} class="block hover:text-stone">{email}</a>
-        <a href={`tel:${phone.replace(/\s/g, '')}`} class="block hover:text-stone">{phone}</a>
+        <a href={`mailto:${email}`} class="block py-1 hover:text-stone">{email}</a>
+        <a href={`tel:${phone.replace(/\s/g, '')}`} class="block py-1 hover:text-stone">{phone}</a>
       </p>
       <!-- Plain text until there's a second language; then make it a <select> -->
       <p class={small}>{language}</p>

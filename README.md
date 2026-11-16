@@ -1,46 +1,48 @@
-# Astro Starter Kit: Basics
+# Pine & Hollow
 
-```sh
-npm create astro@latest -- --template basics
-```
+A one-page landing site for a forest-cabin retreat in the mountains, built with Astro and Tailwind CSS v4.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+![Pine & Hollow landing page](docs/screenshot.jpg)
 
-## 🚀 Project Structure
+<details>
+<summary>Full-page screenshot</summary>
 
-Inside of your Astro project, you'll see the following folders and files:
+![Full page](docs/screenshot-full.jpg)
+
+</details>
+
+## Stack
+
+- [Astro](https://astro.build) with static output and no UI framework
+- [Tailwind CSS v4](https://tailwindcss.com), with design tokens in `@theme`
+- `astro:assets` `<Image />` for responsive, optimised images
+- Cormorant Garamond and Montserrat, self-hosted via [Fontsource](https://fontsource.org)
+
+## Structure
 
 ```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+src/
+├── assets/        photos (credits in CREDITS.md)
+├── components/    one component per section: Header, Hero, About, Getaway,
+│                  Prices, Testimonial, InstagramStrip, Footer
+├── data/site.ts   all copy, links and image references
+├── layouts/       Base.astro: <head>, meta, fonts
+└── pages/         index, privacy, terms
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+The components only handle presentation. All content lives in `src/data/site.ts`.
 
-## 🧞 Commands
+## Run locally
 
-All commands are run from the root of the project, from a terminal:
+Requires Node 22+.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+```sh
+npm install
+npm run dev       # http://localhost:4321
+npm run build     # static output in dist/
+npm run preview
+```
 
-## 👀 Want to learn more?
+## Credits
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+The photos come from Unsplash. See [CREDITS.md](CREDITS.md) for each photographer.

@@ -1,6 +1,10 @@
 ---
 import '../styles/global.css';
 import { site } from '../data/site';
+// Hero headline fonts (300 + the italic accents), preloaded so the h1 doesn't re-wrap on font swap.
+// Same files global.css loads; Vite hashes by content so the URLs match and the preload is reused
+import heroFont from '@fontsource/cormorant-garamond/files/cormorant-garamond-latin-300-normal.woff2?url';
+import heroItalicFont from '@fontsource/cormorant-garamond/files/cormorant-garamond-latin-400-italic.woff2?url';
 
 interface Props {
   title?: string;
@@ -18,6 +22,7 @@ const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : un
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
+    {[heroFont, heroItalicFont].map((href) => <link rel="preload" href={href} as="font" type="font/woff2" crossorigin />)}
     <meta name="description" content={description} />
     {canonical && <link rel="canonical" href={canonical} />}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
