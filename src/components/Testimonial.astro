@@ -1,0 +1,23 @@
+---
+import { site } from '../data/site';
+
+const { quote, rating, text, name, date } = site.testimonial;
+---
+
+<section class="px-4 pb-16 pt-24 md:pb-24 md:pt-48">
+  <figure class="mx-auto flex max-w-2xl flex-col items-center text-center">
+    <blockquote class="flex flex-col items-center">
+      <p class="max-w-xl font-display text-[clamp(2rem,4vw,var(--text-h3))] font-light leading-(--text-h3--line-height) text-ink">
+        {quote}
+      </p>
+      <div role="img" aria-label={`${rating} out of 5 stars`} class="mt-8 text-lg tracking-[0.2em] text-mist">
+        <span aria-hidden="true">{'★'.repeat(rating)}</span>
+      </div>
+      <p class="mt-6 max-w-[34rem]">{text}</p>
+    </blockquote>
+    <figcaption class="mt-8">
+      <span class="block text-eyebrow uppercase text-stone">{name}</span>
+      <span class="block text-sm italic text-stone">{date}</span>
+    </figcaption>
+  </figure>
+</section>

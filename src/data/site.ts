@@ -66,7 +66,19 @@ export const site = {
     date: 'October 2026',
   },
 
-  instagram: { handle: '@pineandhollow', href: 'https://instagram.com/pineandhollow' },
+  instagram: {
+    handle: '@pineandhollow',
+    href: 'https://instagram.com/pineandhollow',
+    // ponytail: all placeholders; swap src per photo
+    images: [
+      { src: heroImage, alt: 'Stack of split firewood beside a cabin door' },
+      { src: heroImage, alt: 'Bright cabin kitchen with a stone counter' },
+      { src: heroImage, alt: 'Mountain lake under a pale morning sky' },
+      { src: heroImage, alt: 'Dining nook with pendant lights and timber beams' },
+      { src: heroImage, alt: 'Tall pines on the ridge trail at dusk' },
+      { src: heroImage, alt: 'Cabin deck with chairs overlooking the valley' },
+    ],
+  },
 
   footer: {
     links: [
